@@ -7,18 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-if (builder.Environment.IsDevelopment())
-{
-    builder.Services.AddDbContext<MovieCatalogDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("MyDbConnection")));
-    builder.Services.AddDistributedMemoryCache();
-}
-else
-{
+
+
     builder.Services.AddDbContext<MovieCatalogDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
     
-}
+
 
 
 
